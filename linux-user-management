@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$EUID" -ne 0 ]; then
+  echo "Run as root"
+  exit 1
+fi
+
+read -p "Enter username: " USERNAME
+useradd -m $USERNAME
+passwd $USERNAME
+
+echo "User $USERNAME created successfully."
